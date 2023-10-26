@@ -10,7 +10,6 @@ public class Driver {
     public static void main(String[] args) {
 
         System.out.println("Thing Team Project V1.1");
-
         Driver driver = new Driver();
         driver.runMenu();
     }
@@ -56,6 +55,8 @@ private void runMenu(){
 ///////////////////////////////////////////////////////
     private void addAThing() {
         System.out.println("Calling addAThing....");
+
+
     }
 ///////////////////////////////////////////////////////
     private void listAllThings() {
