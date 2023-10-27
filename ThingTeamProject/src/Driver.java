@@ -11,6 +11,7 @@ public class Driver {
 
         System.out.println("Thing Team Project V1.1");
         Driver driver = new Driver();
+        driver.setup();
         driver.runMenu();
     }
 
@@ -52,15 +53,40 @@ private void runMenu(){
     System.out.println("Exiting...bye");
     System.exit(0);
 }
-///////////////////////////////////////////////////////
-    private void addAThing() {
-        System.out.println("Calling addAThing....");
+    ///////////////////////////////////////////////////////
+    private void setup(){
+        //find out from the user how many products they would like to order
+        System.out.print("How many Things would you like to have in your Store?  ");
+        int numThings = input.nextInt();
 
+        shop = new Shop(numThings);
 
     }
-///////////////////////////////////////////////////////
-    private void listAllThings() {
-        System.out.println("Calling listAllThings....");
+    ///////////////////////////////////////////////////////
+    //gather the product data from the user and create a new product object.
+    private void addAThing(){
+        input.nextLine();  //dummy read of String to clear the buffer - bug in Scanner class.
+
+        System.out.print("Enter the Thing Name:  ");
+        String thingName = input.nextLine();
+        System.out.print("Enter the Price:  ");
+        double thingPrice = input.nextDouble();
+
+        Thing temp = new Thing(thingName, thingPrice);
+
+        boolean isAdded = shop.add(temp);
+        if (isAdded){
+            System.out.println("Thing Added Successfully");
+        }
+        else{
+            System.out.println("No Thing Added");
+        }
+    }
+    ///////////////////////////////////////////////////////
+    //print the product (the toString method is automatically called).
+    private void listAllThings(){
+        System.out.println("List of Products are:");
+        System.out.println(shop.list());
     }
 ///////////////////////////////////////////////////////
 }
