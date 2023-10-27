@@ -22,6 +22,7 @@ public class Driver {
                ---------
                   1) Add a Thing
                   2) List the Things
+                  3) Find a Thing (by Name)
                   0) Exit
                ==>> """);
         int option = input.nextInt();
@@ -36,6 +37,7 @@ private void runMenu(){
         switch (option){
             case 1 -> addAThing();
             case 2 -> listAllThings();
+            case 3 -> findAThing();
 
             default -> System.out.println("Invalid option entered: " + option);
         }
@@ -53,6 +55,23 @@ private void runMenu(){
     System.out.println("Exiting...bye");
     System.exit(0);
 }
+
+    private void findAThing() {
+        input.nextLine();  //dummy read of String to clear the buffer - bug in Scanner class.
+
+        System.out.print("Enter the Thing Name:  ");
+        String thingName = input.nextLine();
+
+        Thing foundThing = shop.find(thingName);
+        if (foundThing != null) {
+            System.out.println("The found Thing is:  " + foundThing);
+        }
+        else{
+            System.out.println("There are no Things with the name [" + thingName + "] in the store.");
+        }
+
+    }
+
     ///////////////////////////////////////////////////////
     private void setup(){
         //find out from the user how many products they would like to order

@@ -36,4 +36,19 @@ public class Shop {
             return listOfProducts;
         }
     }
+
+    public Thing find(String name) {
+
+        Thing foundThing =  null;
+
+        if (!isEmpty()) {
+            for (int i = 0; i < total; i++)
+                if (things[i].getName().equals(name))
+                    foundThing = things[i];
+        }
+        else {
+            return null;
+        }
+        return foundThing;
+    }
 }
